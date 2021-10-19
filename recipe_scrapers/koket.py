@@ -31,7 +31,13 @@ class Koket(AbstractScraper):
             str(self.soup),
         )
         data = json.loads(jsData.group(0))
-        return data["props"]["pageProps"]["item"]["ingredients"]
+        return "\n".join(
+            [
+                ingredient["name"].strip()
+                for ingredient in data["props"]["pageProps"]["item"]["ingredients"]
+                if ingredient["type"] == "ingredient"
+            ]
+        )
 
     def instructions(self):
         instructions = []
@@ -48,7 +54,13 @@ class Koket(AbstractScraper):
                 instructions.append(
                     {"type": "instruction", "name": instruction.get_text()}
                 )
-        return instructions
+        return "\n".join(
+            [
+                instruction["name"].strip()
+                for instruction in instructions
+                if instruction["type"] == "instruction"
+            ]
+        )
 
     def ratings(self):
         jsData = re.search(

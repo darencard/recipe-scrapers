@@ -259,7 +259,13 @@ class TestKoketScraper(ScraperTest):
             },
         ]
         self.assertEqual(
-            [str(json_element) for json_element in json_data],
+            "\n".join(
+                [
+                    json_element["name"].strip()
+                    for json_element in json_data
+                    if json_element["type"] == "ingredient"
+                ]
+            ),
             self.harvester_class.ingredients(),
         )
 
@@ -309,7 +315,13 @@ class TestKoketScraper(ScraperTest):
         ]
 
         self.assertEqual(
-            [str(json_element) for json_element in json_data],
+            "\n".join(
+                [
+                    json_element["name"].strip()
+                    for json_element in json_data
+                    if json_element["type"] == "instruction"
+                ]
+            ),
             self.harvester_class.instructions(),
         )
 
