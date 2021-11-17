@@ -180,9 +180,9 @@ class SchemaOrg:
                     schema_instruction_item
                 )
 
-            return normalize_string(instruction)
+            # return normalize_string(instruction)
 
-        # return instructions
+        return instructions
 
     def ratings(self):
         ratings = self.data.get("aggregateRating")
