@@ -180,7 +180,7 @@ class SchemaOrg:
                     schema_instruction_item
                 )
 
-            return normalize_string(instruction) for instruction in instructions_gist
+            return normalize_string(instruction)
 
         # return instructions
 
