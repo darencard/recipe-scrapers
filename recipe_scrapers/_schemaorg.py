@@ -180,7 +180,7 @@ class SchemaOrg:
                     schema_instruction_item
                 )
 
-            return "\n".join(
+            return "&&".join(
                 normalize_string(instruction) for instruction in instructions_gist
             )
 
